@@ -1,5 +1,5 @@
-str = gets.chomp.split('') 
-target = gets.chomp        
+str = gets.chomp.split.map(&:to_s)
+target = gets.chomp.to_s         
 
 found = false 
 
