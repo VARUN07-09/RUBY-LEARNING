@@ -11,6 +11,6 @@ begin
   age= gets.chomp.to_i
   raise AgeError.new("Age is not valid, Please put age between 18 to 100") if age >=100 || age<=18
   puts "VALID AGE"
-rescue StandardError => e 
+rescue AgeError => e 
   puts e.message
 end
