@@ -1,45 +1,45 @@
-require rspec
-require_relative bankAcc  
+require 'rspec'
+require_relative 'bankAcc'
+
 RSpec.describe BankAccount do
-  let(:bank_account) { BankAccount.new(100) }
+  let(:account) { BankAccount.new(100) } 
 
-  describe "#deposit" do
-    it "increases the balance by the deposit amount" do
-      bank_account.deposit(50)
-      expect(bank_account.balance).to eq(150)
+
+  describe "#deposit_amt" do
+    it "deposits money into the account" do
+      expect(account.deposit_amt(50)).to be(true)
+      expect(account.balance).to eq(150)
     end
 
-    it "raises an error for negative deposit amounts" do
-      expect { bank_account.deposit(-50) }.to raise_error(ArgumentError, "Deposit amount must be positive")
-    end
 
-    it "raises an error for zero deposit amounts" do
-      expect { bank_account.deposit(0) }.to raise_error(ArgumentError, "Deposit amount must be positive")
-    end
-  end
-
-  describe "#withdraw" do
-    it "decreases the balance by the withdrawal amount" do
-      bank_account.withdraw(50)
-      expect(bank_account.balance).to eq(50)
-    end
-
-    it "raises an error for negative withdrawal amounts" do
-      expect { bank_account.withdraw(-50) }.to raise_error(ArgumentError, "Withdraw amount must be positive")
-    end
-
-    it "raises an error for zero withdrawal amounts" do
-      expect { bank_account.withdraw(0) }.to raise_error(ArgumentError, "Withdraw amount must be positive")
-    end
-
-    it "raises an error for withdrawals exceeding the balance" do
-      expect { bank_account.withdraw(150) }.to raise_error(ArgumentError, "Insufficient funds")
+    it "raises an error when deposit amount is non-positive" do
+      expect { account.deposit_amt(0) }.to raise_error(ArgumentError, "Deposit amount must be positive")
+      expect { account.deposit_amt(-10) }.to raise_error(ArgumentError, "Deposit amount must be positive")
     end
   end
 
-  describe "#check_balance" do
+  describe "#withdrawal_amt" do
+    it "withdraws money from the account" do
+      expect(account.withdrawal_amt(50)).to be(true)
+      expect(account.balance).to eq(50)
+    end
+
+
+    it "raises an error when withdrawal exceeds balance" do
+      expect { account.withdrawal_amt(200) }.to raise_error(NegativeBalanceError, "Amount is greater than balance amount 100")
+    end
+
+
+    it "raises an error when withdrawal amount is non-positive" do
+      expect { account.withdrawal_amt(0) }.to raise_error(ArgumentError, "Withdrawal amount must be positive")
+      expect { account.withdrawal_amt(-100) }.to raise_error(ArgumentError, "Withdrawal amount must be positive")
+    end
+  end
+
+
+  describe "#display_balance" do
     it "returns the current balance" do
-      expect(bank_account.check_balance).to eq(100)
+      expect(account.display_balance).to eq(100)
     end
   end
 end
