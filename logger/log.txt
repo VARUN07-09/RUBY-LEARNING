@@ -1,0 +1,5 @@
+D, [2024-12-20T10:30:20.076051 #13140] DEBUG -- : this is a debug message 
+F, [2024-12-20T10:30:20.076421 #13140] FATAL -- : this is a fatal message 
+W, [2024-12-20T10:30:20.076723 #13140]  WARN -- : this is a warning message 
+E, [2024-12-20T10:30:20.076988 #13140] ERROR -- : this is a error
+I, [2024-12-20T10:30:20.077267 #13140]  INFO -- : this is a info message
