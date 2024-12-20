@@ -1,0 +1,6 @@
+# Logfile created on 2024-12-20 10:31:50 +0530 by logger.rb/v1.6.0
+D, [2024-12-20T10:31:50.883737 #4904] DEBUG -- : this is a debug message 
+F, [2024-12-20T10:31:50.883852 #4904] FATAL -- : this is a fatal message 
+W, [2024-12-20T10:31:50.883914 #4904]  WARN -- : this is a warning message 
+E, [2024-12-20T10:31:50.883968 #4904] ERROR -- : this is a error
+I, [2024-12-20T10:31:50.884021 #4904]  INFO -- : this is a info message
